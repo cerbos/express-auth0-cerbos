@@ -13,12 +13,12 @@ html(lang="en")
       div.flex
         div.pr-2(class="w-1/3")
           p.text-lg.leading-6.font-bold.mb-2 Auth0 Token
-          p.h-20.text-sm The token provided by Auth0 with the authentication informmation and any roles set.
+          p.h-20.text-sm The token provided by Auth0 with the authentication information and any roles set.
           pre.text-xs.bg-gray-100.font-mono.overflow-auto.rounded
             code.highlight-json= JSON.stringify(jwt,0,2)
         div.pl-2.pr-2(class="w-1/3")
           p.text-lg.leading-6.font-bold.mb-2 Cerbos Request
-          p.h-20.text-sm The request to the Cerbos PDP with the ID and Role of the prinicpal passed from the Auth0 token along with two example resources. Normally these would be fetched from your datastore.
+          p.h-20.text-sm The request to the Cerbos PDP with the ID and Role of the principal passed from the Auth0 token along with two example resources. Normally these would be fetched from your datastore.
           pre.text-xs.bg-gray-100.font-mono.overflow-auto.rounded
             code.highlight-json= JSON.stringify(cerbosPayload,0,2)
         div.pl-2(class="w-1/3")
