@@ -27,14 +27,16 @@ router.get("/user", secured(), async function (req, res, next) {
     resource: {
       kind: "contact",
       instances: {
-        contact1: {
+        "5cc22de4-30a4-4016-9679-65f054573bd0": {
           attr: {
             owner: "auth0|6152dcdf1c2789006826dd5c",
+            lastUpdated: new Date(2020, 10, 10),
           },
         },
-        contact2: {
+        "ac29e6df-ad98-421c-a6b5-2ae3a85dd220": {
           attr: {
             owner: "auth0|6152dcc3ed3a290068aa12c2",
+            lastUpdated: new Date(2020, 10, 12),
           },
         },
       },
@@ -54,7 +56,7 @@ router.get("/user", secured(), async function (req, res, next) {
   res.render("user", {
     email: `${userProfile.displayName} (ID: ${userProfile.id})`,
     cerbosPayload,
-    cerbosResponse: allowed,
+    cerbosResponse: allowed.resp,
     jwt: profile,
   });
 });

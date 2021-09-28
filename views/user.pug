@@ -3,7 +3,11 @@ html(lang="en")
   include includes/head.pug
   body.min-h-screen.bg-gray-100.py-6.flex.flex-col.justify-center
     #container.relative.px-4.py-10.bg-white.shadow-lg.mx-auto.rounded(class="w-full")
-      h1.pb-4.text-base.leading-6.font-bold.text-xl Cerbos Auth0 Demo
+      div.flex
+        div(class="w-3/4")
+          h1.pb-4.text-base.leading-6.font-bold.text-xl Cerbos Auth0 Demo
+        div.text-right(class="w-1/4")
+          a.px-6.rounded.bg-blue-500.p-2.text-center.text-white.shadow-lg(href="/logout") Logout
       h2.text-lg.leading-6.font-bold.mb-2 Authenticated as:
       p.pb-4.font-mono.leading-6.text-sm= email
       div.flex
@@ -14,13 +18,13 @@ html(lang="en")
             code.highlight-json= JSON.stringify(jwt,0,2)
         div.pl-2(class="w-1/3")
           p.text-lg.leading-6.font-bold.mb-2 Cerbos Request
-          p.h-20.text-sm The request to the Cerbos PDP with information about the prinicpal from the Auth0 token.
+          p.h-20.text-sm The request to the Cerbos PDP with the ID and Role of the prinicpal passed from the Auth0 token along with two example resources. Normally these would be fetched from your datastore.
           pre.text-xs.bg-gray-100.font-mono.overflow-auto.rounded
             code.highlight-json= JSON.stringify(cerbosPayload,0,2)
         div.pl-2(class="w-1/3")
           p.text-lg.leading-6.font-bold.mb-2 Cerbos Response
-          p.h-20.text-sm The authorization response from the Cerbos PDP
+          p.h-20.text-sm The authorization response from the Cerbos PDP. If you are logged in as an <b>admin</b> then all actions are allowed. If a <b>user</b> then only possible to <em>update</em> or <em>delete</em> if you are the owner of the resource.
           pre.text-xs.bg-gray-100.font-mono.overflow-auto.rounded
             code.highlight-json= JSON.stringify(cerbosResponse,0,2)          
-      div.pt-5
-        a.block.rounded.bg-blue-500.p-2.text-center.text-white.shadow-lg(href="/logout") Logout
+      
+        
