@@ -15,6 +15,7 @@ router.get("/user", secured(), async function (req, res, next) {
     roles: _json["https://cerbos.cloud/roles"] || [],
   };
 
+  // Construct the call to Cerbos using the attributes from the Auth0 token data
   const cerbosPayload = {
     principal: {
       id: profile.id,
@@ -28,20 +29,30 @@ router.get("/user", secured(), async function (req, res, next) {
       instances: {
         contact1: {
           attr: {
-            id: "contact1",
+            owner: "auth0|6152dcdf1c2789006826dd5c",
+          },
+        },
+        contact2: {
+          attr: {
+            owner: "auth0|6152dcc3ed3a290068aa12c2",
           },
         },
       },
     },
-    actions: ["read"],
+    actions: ["read", "create", "update"],
   };
 
   const allowed = await cerbos.check(cerbosPayload);
 
-  console.log(allowed);
+  // Usually check access
+  // if (allowed.isAuthorized("contact1", "read")) {
+  //   return res.json(contact);
+  // } else {
+  //   return res.status(403).json({ error: "Unauthorized" });
+  // }
 
   res.render("user", {
-    email: userProfile.displayName,
+    email: `${userProfile.displayName} (ID: ${userProfile.id})`,
     cerbosPayload,
     cerbosResponse: allowed,
     jwt: profile,
