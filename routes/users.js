@@ -4,7 +4,7 @@ const secured = require("./secured");
 const router = express.Router();
 
 const cerbos = new Cerbos.Cerbos({
-  hostname: "http://localhost:3592", // The Cerbos PDP instance
+  hostname: process.env.CERBOS_INSTANCE, // The Cerbos PDP instance
 });
 
 /* GET user profile. */
@@ -22,6 +22,7 @@ router.get("/user", secured(), async function (req, res, next) {
       roles: profile.roles,
       attr: {
         email: profile.displayName,
+        provider: profile.provider,
       },
     },
     resource: {
