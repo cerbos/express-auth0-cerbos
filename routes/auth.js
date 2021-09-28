@@ -54,7 +54,7 @@ router.get("/logout", (req, res) => {
   );
   var searchString = querystring.stringify({
     client_id: process.env.AUTH0_CLIENT_ID,
-    returnTo: returnTo,
+    returnTo: process.env.AUTH0_RETURN_TO || returnTo,
   });
   logoutURL.search = searchString;
 
