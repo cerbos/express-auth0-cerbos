@@ -1,0 +1,19 @@
+doctype html
+html(lang="en")
+  include includes/head.pug
+  body.min-h-screen.bg-gray-100.py-6.flex.flex-col.justify-center
+    #container.relative.px-4.py-10.bg-white.shadow-lg.max-w-lg.mx-auto.rounded
+      h1.pb-6.text-base.leading-6.font-bold.text-xl Cerbos Auth0
+      p.pb-6 This is a demo application integrating Cerbos and Auth0
+      p.text-lg.leading-6.font-bold.mb-2 Demo Credentials
+      ul 
+        li <b>Auth0 Role:</b> User
+        li <b>Email:</b> demo-user@cerbos.cloud
+        li <b>Password:</b> <code>Cerbos123!</code>
+      <br/>
+      ul 
+        li <b>Auth0 Role:</b> Admin
+        li <b>Email:</b> demo-admin@cerbos.cloud
+        li <b>Password:</b> <code>Cerbos123!</code>
+      div.pt-5
+        a.block.rounded.bg-blue-500.p-2.text-center.text-white.shadow-lg(href="/login") Login
