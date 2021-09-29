@@ -61,10 +61,10 @@ Should you wish to experiment with this policy, you can <a href="https://play.ce
 
 The policy expects one of two roles to be set on the principal - `admin` and `user`. These roles are authorized as follows:
 
-| Action | User | Admin |
-| ------ | ---- | ----- |
-| list   | Y    | Y     |
-| read   | Y    | Y     |
-| create | N    | Y     |
-| update | N    | Y     |
-| delete | N    | Y     |
+| Action | User     | Admin |
+| ------ | -------- | ----- |
+| list   | Y        | Y     |
+| read   | Y        | Y     |
+| create | Y        | Y     |
+| update | If owner | Y     |
+| delete | If owner | Y     |
