@@ -24,35 +24,35 @@ html(lang="en")
         div.pl-2(class="w-1/3")
           p.text-lg.leading-6.font-bold.mb-2 Cerbos Response
           p.h-20.text-sm The authorization response from the Cerbos PDP. If you are logged in as an <b>admin</b> then all actions are allowed. If you have the <b>user</b> role then it is only possible to <em>update</em> or <em>delete</em> if you are the owner of the resource.
-          div.text-sm.mb-2.p-1.bg-gray-200.rounded
+          div.text-sm.mb-2.p-2.border.border-gray-200.rounded
             table.w-full
-              thead
+              thead.bg-gray-100
                 tr
-                  th.text-left Resource 
-                  th Read
-                  th Create 
-                  th Update
-                  th Delete
+                  th.text-left.p-1 Resource 
+                  th.p-1 Read
+                  th.p-1 Create 
+                  th.p-1 Update
+                  th.p-1 Delete
               tbody
                 each val, key in cerbosResponse.resourceInstances
                   tr  
-                    td= key
-                    td.text-center
+                    td.p-1= key
+                    td.text-center.p-1
                       if val.actions.read == "EFFECT_ALLOW"
                         p.text-green-500.font-bold Yes
                       else
                         p.text-red-500.font-bold No
-                    td.text-center
+                    td.text-center.p-1
                       if val.actions.create == "EFFECT_ALLOW"
                         p.text-green-500.font-bold Yes
                       else
                         p.text-red-500.font-bold No
-                    td.text-center
+                    td.text-center.p-1
                       if val.actions.update  == "EFFECT_ALLOW"
                         p.text-green-500.font-bold Yes
                       else
                         p.text-red-500.font-bold No
-                    td.text-center
+                    td.text-center.p-1
                       if val.actions.delete  == "EFFECT_ALLOW"
                         p.text-green-500.font-bold Yes
                       else
