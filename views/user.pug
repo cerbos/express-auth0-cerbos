@@ -23,7 +23,7 @@ html(lang="en")
             code.highlight-json= JSON.stringify(cerbosPayload,0,2)
         div.pl-2(class="w-1/3")
           p.text-lg.leading-6.font-bold.mb-2 Cerbos Response
-          p.h-20.text-sm The authorization response from the Cerbos PDP. If you are logged in as an <b>admin</b> then all actions are allowed. If you have the <b>user</b> role then it is only possible to <em>update</em> or <em>delete</em> if you are the owner of the resource.
+          p.h-20.text-sm The authorization response from the Cerbos PDP. If you are logged in as an <b>admin</b> then all actions are allowed. If you have the <b>user</b> role then it is only possible to <em>update</em> or <em>delete</em> if you are the owner of the resource. You can find the full policy <a class="underline" href="https://play.cerbos.dev/p/g561543292ospj7w0zOrFx7H5DzhmLu2">here</a>.
           div.text-sm.mb-2.p-2.border.border-gray-200.rounded
             table.w-full
               thead.bg-gray-100
@@ -55,5 +55,5 @@ html(lang="en")
           pre.text-xs.bg-gray-100.font-mono.overflow-auto.rounded
             code.highlight-json= JSON.stringify(cerbosResponse,0,2)          
       div.pt-5.text-sm.text-center
-        p You can find the policy <a class="underline" href="https://play.cerbos.dev/p/g561543292ospj7w0zOrFx7H5DzhmLu2">here</a> and the code for this example on <a class="underline" href="https://github.com/cerbos/express-auth0-cerbos">Github</a>. More information, examples and documentation can be found on <a class="underline" href="https://cerbos.dev">cerbos.dev</a>
+        p The code for this example is available <a class="underline" href="https://github.com/cerbos/express-auth0-cerbos">Github</a>. More information, examples and documentation can be found on <a class="underline" href="https://cerbos.dev">cerbos.dev</a>
         
