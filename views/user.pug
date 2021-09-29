@@ -24,6 +24,40 @@ html(lang="en")
         div.pl-2(class="w-1/3")
           p.text-lg.leading-6.font-bold.mb-2 Cerbos Response
           p.h-20.text-sm The authorization response from the Cerbos PDP. If you are logged in as an <b>admin</b> then all actions are allowed. If you have the <b>user</b> role then it is only possible to <em>update</em> or <em>delete</em> if you are the owner of the resource.
+          div.text-sm.mb-2.p-1.bg-gray-200.rounded
+            table.w-full
+              thead
+                tr
+                  th.text-left Resource 
+                  th Read
+                  th Create 
+                  th Update
+                  th Delete
+              tbody
+                each val, key in cerbosResponse.resourceInstances
+                  tr  
+                    td= key
+                    td.text-center
+                      if val.actions.read == "EFFECT_ALLOW"
+                        p.text-green-500.font-bold Yes
+                      else
+                        p.text-red-500.font-bold No
+                    td.text-center
+                      if val.actions.create == "EFFECT_ALLOW"
+                        p.text-green-500.font-bold Yes
+                      else
+                        p.text-red-500.font-bold No
+                    td.text-center
+                      if val.actions.update  == "EFFECT_ALLOW"
+                        p.text-green-500.font-bold Yes
+                      else
+                        p.text-red-500.font-bold No
+                    td.text-center
+                      if val.actions.delete  == "EFFECT_ALLOW"
+                        p.text-green-500.font-bold Yes
+                      else
+                        p.text-red-500.font-bold No
+                                                                              
           pre.text-xs.bg-gray-100.font-mono.overflow-auto.rounded
             code.highlight-json= JSON.stringify(cerbosResponse,0,2)          
       

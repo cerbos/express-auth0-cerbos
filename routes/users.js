@@ -28,13 +28,13 @@ router.get("/user", secured(), async function (req, res, next) {
     resource: {
       kind: "contact",
       instances: {
-        "5cc22de4-30a4-4016-9679-65f054573bd0": {
+        "5cc22de4": {
           attr: {
             owner: "auth0|6152dcdf1c2789006826dd5c",
             lastUpdated: new Date(2020, 10, 10),
           },
         },
-        "ac29e6df-ad98-421c-a6b5-2ae3a85dd220": {
+        ac29e6df: {
           attr: {
             owner: "auth0|6152dcc3ed3a290068aa12c2",
             lastUpdated: new Date(2020, 10, 12),
@@ -42,7 +42,7 @@ router.get("/user", secured(), async function (req, res, next) {
         },
       },
     },
-    actions: ["read", "create", "update"],
+    actions: ["read", "create", "update", "delete"],
   };
 
   const allowed = await cerbos.check(cerbosPayload);
