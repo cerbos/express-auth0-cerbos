@@ -42,7 +42,7 @@ router.get("/user", secured(), async function (req, res, next) {
         },
       },
     },
-    actions: ["read", "create", "update", "delete"],
+    actions: ["read", "update", "delete"],
   };
 
   const allowed = await cerbos.check(cerbosPayload);
