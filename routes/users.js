@@ -12,6 +12,7 @@ router.get("/user", secured(), async function (req, res, next) {
   const { _raw, _json, ...userProfile } = req.user;
   const profile = {
     ...userProfile,
+    // extract the roles from the Auth0 token
     roles: _json["https://cerbos.cloud/roles"] || [],
   };
 
