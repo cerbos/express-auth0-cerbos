@@ -1,9 +1,9 @@
 const express = require("express");
-const Cerbos = require("cerbos");
+const { Cerbos } = require("@cerbos/sdk");
 const secured = require("./secured");
 const router = express.Router();
 
-const cerbos = new Cerbos.Cerbos({
+const cerbos = new Cerbos({
   hostname: process.env.CERBOS_INSTANCE, // The Cerbos PDP instance
 });
 
