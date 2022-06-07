@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "auth0": "^2.36.2",
-    "@cerbos/sdk": "^0.4.0",
+    "@cerbos/grpc": "^0.5.1",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-session": "^1.17.2",

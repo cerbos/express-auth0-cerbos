@@ -28,32 +28,31 @@ html(lang="en")
             table.w-full
               thead.bg-gray-100
                 tr
-                  th.text-left.p-1 Resource 
+                  th.text-left.p-1 Resource
                   th.p-1 Read
                   th.p-1 Update
                   th.p-1 Delete
               tbody
-                each val, key in cerbosResponse.resourceInstances
-                  tr  
-                    td.p-1= key
+                each result in cerbosResponse.results
+                  tr
+                    td.p-1= result.resource.id
                     td.text-center.p-1
-                      if val.actions.read == "EFFECT_ALLOW"
+                      if result.actions.read == "EFFECT_ALLOW"
                         p.text-green-500.font-bold Yes
                       else
                         p.text-red-500.font-bold No
                     td.text-center.p-1
-                      if val.actions.update  == "EFFECT_ALLOW"
+                      if result.actions.update == "EFFECT_ALLOW"
                         p.text-green-500.font-bold Yes
                       else
                         p.text-red-500.font-bold No
                     td.text-center.p-1
-                      if val.actions.delete  == "EFFECT_ALLOW"
+                      if result.actions.delete == "EFFECT_ALLOW"
                         p.text-green-500.font-bold Yes
                       else
                         p.text-red-500.font-bold No
-                                                                              
+
           pre.text-xs.bg-gray-100.font-mono.overflow-auto.rounded
-            code.highlight-json= JSON.stringify(cerbosResponse,0,2)          
+            code.highlight-json= JSON.stringify(cerbosResponse,0,2)
       div.pt-5.text-sm.text-center
         p The code for this example is available <a class="underline" href="https://github.com/cerbos/express-auth0-cerbos">Github</a>. More information, examples and documentation can be found on <a class="underline" href="https://cerbos.dev">cerbos.dev</a>
-        
