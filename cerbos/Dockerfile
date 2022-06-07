@@ -1,4 +1,4 @@
-FROM ghcr.io/cerbos/cerbos:0.7.0-amd64
+FROM ghcr.io/cerbos/cerbos:0.17.0-amd64
 COPY policies /policies
 COPY config /config
 ENTRYPOINT ["/cerbos"]

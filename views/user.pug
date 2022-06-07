@@ -33,21 +33,21 @@ html(lang="en")
                   th.p-1 Update
                   th.p-1 Delete
               tbody
-                each val, key in cerbosResponse.resourceInstances
+                each resource in cerbosResponse
                   tr  
-                    td.p-1= key
+                    td.p-1= resource.resource.id
                     td.text-center.p-1
-                      if val.actions.read == "EFFECT_ALLOW"
+                      if resource.actions.read == "EFFECT_ALLOW"
                         p.text-green-500.font-bold Yes
                       else
                         p.text-red-500.font-bold No
                     td.text-center.p-1
-                      if val.actions.update  == "EFFECT_ALLOW"
+                      if resource.actions.update  == "EFFECT_ALLOW"
                         p.text-green-500.font-bold Yes
                       else
                         p.text-red-500.font-bold No
                     td.text-center.p-1
-                      if val.actions.delete  == "EFFECT_ALLOW"
+                      if resource.actions.delete  == "EFFECT_ALLOW"
                         p.text-green-500.font-bold Yes
                       else
                         p.text-red-500.font-bold No

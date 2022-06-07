@@ -1,11 +1,12 @@
 const express = require("express");
-const { Cerbos } = require("@cerbos/sdk");
+const { GRPC } = require("@cerbos/grpc");
 const secured = require("./secured");
 const router = express.Router();
 
-const cerbos = new Cerbos({
-  hostname: process.env.CERBOS_INSTANCE, // The Cerbos PDP instance
-});
+const cerbos = new GRPC(
+  process.env.CERBOS_INSTANCE, // The Cerbos PDP instance,
+  { tls: false }
+);
 
 /* GET user profile. */
 router.get("/user", secured(), async function (req, res, next) {
@@ -26,28 +27,34 @@ router.get("/user", secured(), async function (req, res, next) {
         provider: profile.provider,
       },
     },
-    resource: {
-      kind: "contact",
-      instances: {
-        "5cc22de4": {
+    resources: [
+      {
+        resource: {
+          kind: "contact",
+          id: "5cc22de4",
           attr: {
             owner: "auth0|6152dcdf1c2789006826dd5c",
             lastUpdated: new Date(2020, 10, 10),
           },
         },
-        ac29e6df: {
+        actions: ["read", "update", "delete"],
+      },
+      {
+        resource: {
+          kind: "contact",
+          id: "ac29e6df",
           attr: {
             owner: "auth0|6152dcc3ed3a290068aa12c2",
             lastUpdated: new Date(2020, 10, 12),
           },
         },
+        actions: ["read", "update", "delete"],
       },
-    },
-    actions: ["read", "update", "delete"],
-    includeMeta: true,
+    ],
   };
 
-  const allowed = await cerbos.check(cerbosPayload);
+  const decision = await cerbos.checkResources(cerbosPayload);
+  console.log(JSON.stringify(decision.results, 0, 2));
 
   // Usually check access
   // if (allowed.isAuthorized("contact1", "read")) {
@@ -59,7 +66,7 @@ router.get("/user", secured(), async function (req, res, next) {
   res.render("user", {
     email: `${userProfile.displayName} (ID: ${userProfile.id})`,
     cerbosPayload,
-    cerbosResponse: allowed.resp,
+    cerbosResponse: decision.results,
     jwt: profile,
   });
 });
