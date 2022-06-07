@@ -5,7 +5,7 @@ const router = express.Router();
 
 const cerbos = new GRPC(
   process.env.CERBOS_INSTANCE, // The Cerbos PDP instance,
-  { tls: false }
+  { tls: process.env.CERBOS_INSTANCE_TLS === "true" } // TLS options
 );
 
 /* GET user profile. */
@@ -54,7 +54,6 @@ router.get("/user", secured(), async function (req, res, next) {
   };
 
   const decision = await cerbos.checkResources(cerbosPayload);
-  console.log(JSON.stringify(decision.results, 0, 2));
 
   // Usually check access
   // if (allowed.isAuthorized("contact1", "read")) {
