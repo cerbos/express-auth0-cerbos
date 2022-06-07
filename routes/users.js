@@ -22,7 +22,7 @@ router.get("/user", secured(), async function (req, res, next) {
     principal: {
       id: profile.id,
       roles: profile.roles,
-      attr: {
+      attributes: {
         email: profile.displayName,
         provider: profile.provider,
       },
@@ -32,7 +32,7 @@ router.get("/user", secured(), async function (req, res, next) {
         resource: {
           kind: "contact",
           id: "5cc22de4",
-          attr: {
+          attributes: {
             owner: "auth0|6152dcdf1c2789006826dd5c",
             lastUpdated: new Date(2020, 10, 10),
           },
@@ -43,7 +43,7 @@ router.get("/user", secured(), async function (req, res, next) {
         resource: {
           kind: "contact",
           id: "ac29e6df",
-          attr: {
+          attributes: {
             owner: "auth0|6152dcc3ed3a290068aa12c2",
             lastUpdated: new Date(2020, 10, 12),
           },
