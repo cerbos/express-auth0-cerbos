@@ -1,9 +1,9 @@
 const express = require("express");
-const { GRPC } = require("@cerbos/grpc");
+const { GRPC: Cerbos } = require("@cerbos/grpc");
 const secured = require("./secured");
 const router = express.Router();
 
-const cerbos = new GRPC(
+const cerbos = new Cerbos(
   process.env.CERBOS_INSTANCE, // The Cerbos PDP instance,
   { tls: process.env.CERBOS_INSTANCE_TLS === "true" } // TLS options
 );
