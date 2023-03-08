@@ -1,6 +1,7 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
+    "schedule:earlyMondays",
     "config:base",
     "docker:disable",
     "group:allNonMajor",
@@ -9,7 +10,7 @@
   ],
   "automerge": true,
   "automergeSchedule": [
-    "after 9am and before 5pm every weekday"
+    "after 9am and before 5pm Monday"
   ],
   "major": {
     "automerge": false
