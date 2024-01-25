@@ -1,5 +1,10 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 docker run -i -t -p 3592:3592 -p 3593:3593 \
-  -v $(pwd)/config:/config \
-  -v $(pwd)/policies:/policies \
-  ghcr.io/cerbos/cerbos:0.17.0 \
-  server --config=/config/conf.yaml
+	-v "${SCRIPT_DIR}/config:/config" \
+	-v "${SCRIPT_DIR}/policies:/policies" \
+	ghcr.io/cerbos/cerbos:latest \
+	server --config=/config/conf.yaml
